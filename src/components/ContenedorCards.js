@@ -1,12 +1,13 @@
 import ContenedorCardsElement from "../elements/ContenedorCardsElement";
 import Card from "./Card";
 
-const ContenedorCards = () => {
+const ContenedorCards = ({tools}) => {
     return ( 
         <ContenedorCardsElement>
-            <Card />
-            <Card />
-            <Card />
+            {tools.map((tool) => {
+                return <Card key={tool.id} titulo={tool.titulo} descripcion={tool.descripcion} enlace={tool.enlace}/>;
+            })}
+            
         </ContenedorCardsElement>
      );
 }

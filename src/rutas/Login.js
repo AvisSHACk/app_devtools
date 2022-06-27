@@ -1,14 +1,29 @@
 import { useState } from "react";
+import {signInWithEmailAndPassword, auth} from "./../firebase/firebaseConfig";
 import {Formulario, Texto, Button} from "../elements/FormulariosElements";
 import LogoElement from "../elements/LogoElement";
+import {useNavigate} from "react-router-dom";
 const Login = () => {
     const [correo, cambiarCorreo] = useState("");
     const [password, cambiarPassword] = useState("");
+    const history = useNavigate();
+
+    const onHandle = async (e) => {
+        e.preventDefault();
+
+        try {
+            await signInWithEmailAndPassword(auth, correo, password);
+            history("/");
+        } catch (error) {
+            console.log(error.message);
+        }
+
+    }
     return ( 
         <div>
             <LogoElement>Inicia sesion en Dev tools</LogoElement>
 
-            <Formulario autenticacion>
+            <Formulario autenticacion onSubmit={onHandle}>
             <Texto 
                 type="text" 
                 name="correo" 

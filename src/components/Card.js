@@ -1,10 +1,10 @@
 import ContenedorCard from "../elements/CardElement";
 
-const Card = () => {
+const Card = ({id, titulo, descripcion, enlace}) => {
     return ( 
         <ContenedorCard>
-            <h3>Tool dev</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit a sint</p>
+            <h3>{titulo}</h3>
+            <p>{descripcion}</p>
         </ContenedorCard>
      );
 }

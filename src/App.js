@@ -5,6 +5,7 @@ import Login from './rutas/Login';
 import Registro from './rutas/Registro';
 import RutaProtegida from './components/RutaProtegida';
 import { AuthProvider } from './contextos/authContext';
+import AgregarHerramienta from './rutas/AgregarHerramienta';
 
 function App() {
   return (
@@ -13,8 +14,9 @@ function App() {
         <Routes>
           <Route path={"/login"} element={<Login />}/>
           <Route path={"/registro"} element={<Registro />}/>
+          <Route path={"/"} element={<Inicio />}/>
           <Route element={<RutaProtegida/>}>
-            <Route path={"/"} element={<Inicio />}/>
+            <Route path={"/agregarHerramienta"} element={<AgregarHerramienta />}/>
           </Route>
         </Routes>
       </AuthProvider>
