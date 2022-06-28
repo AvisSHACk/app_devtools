@@ -29,7 +29,7 @@ const Registro = () => {
                     mensaje = "La contraseña es incorrecta, intentalo denuevo";
                     break;
                 case 'auth/user-not-found':
-                    mensaje = "El usuario no existe";
+                    // mensaje = "El usuario no existe";
                     break;
             
                 default:
