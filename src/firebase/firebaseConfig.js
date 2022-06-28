@@ -4,6 +4,7 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 import {getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "firebase/auth"
 import { getFirestore, addDoc, onSnapshot, collection } from "firebase/firestore";
+import {getStorage, ref, uploadBytes, getDownloadURL} from "firebase/storage";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -18,15 +19,20 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const storage = getStorage(app);
 const auth = getAuth();
 
 export {auth,
     db,
+    storage,
     onAuthStateChanged, 
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     signOut,
     addDoc, 
     collection,
-    onSnapshot
+    onSnapshot,
+    ref,
+    uploadBytes,
+    getDownloadURL
 }
