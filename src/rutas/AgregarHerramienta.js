@@ -9,11 +9,18 @@ const AgregarHerramienta = () => {
     const [descripcion, cambiarDescripcion] = useState("");
     const [enlace, cambiarEnlace] = useState("");
     const [imagen, cambiarImagen] = useState("");
+    const [mensaje, cambiarMensaje] = useState("");
     const history = useNavigate();
     
 
     const agregarHerramienta = (e) => {
         e.preventDefault();
+
+        if(titulo === "" || descripcion === "" || enlace === "" || imagen === ""){
+            console.log("Hola")
+            cambiarMensaje("Los campos no pueden estar vacios");
+            return;
+        }
 
         const file = imagen;
         const fileReader = new FileReader();
@@ -86,6 +93,7 @@ const AgregarHerramienta = () => {
                 />
 
                 <Button autenticacion>Agregar Herramienta</Button>
+                <div>{mensaje}</div>
             </Formulario>
         </div>
      );

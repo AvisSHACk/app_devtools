@@ -6,16 +6,36 @@ import {useNavigate} from "react-router-dom";
 const Login = () => {
     const [correo, cambiarCorreo] = useState("");
     const [password, cambiarPassword] = useState("");
+    const [mensaje, cambiarMensaje] = useState("");
     const history = useNavigate();
 
     const onHandle = async (e) => {
         e.preventDefault();
 
+        if(correo === "" || password === ""){
+            cambiarMensaje("Los campos no pueden estar vacios");
+            return;
+        }
+
         try {
             await signInWithEmailAndPassword(auth, correo, password);
             history("/");
         } catch (error) {
-            console.log(error.message);
+            let mensaje;
+            switch (error.code) {
+                case 'auth/wrong-password':
+                    mensaje = "La contraseña es incorrecta, intentalo denuevo";
+                    break;
+                case 'auth/user-not-found':
+                    mensaje = "El usuario no existe";
+                    break;
+            
+                default:
+                    mensaje = "Hubo un error al intentar conectarse con el servidor";
+                    break;
+            }
+
+            cambiarMensaje(mensaje);
         }
 
     }
@@ -44,6 +64,7 @@ const Login = () => {
                 autenticacion
             />
             <Button autenticacion>Ingresar</Button>
+            <div>{mensaje}</div>
         </Formulario>
         </div>
      );
