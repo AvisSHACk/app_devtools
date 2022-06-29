@@ -10,6 +10,7 @@ const AgregarHerramienta = () => {
     const [enlace, cambiarEnlace] = useState("");
     const [imagen, cambiarImagen] = useState("");
     const [mensaje, cambiarMensaje] = useState("");
+    const [cargando, cambiarCargando] = useState(false);
     const history = useNavigate();
     
 
@@ -21,20 +22,31 @@ const AgregarHerramienta = () => {
             cambiarMensaje("Los campos no pueden estar vacios");
             return;
         }
-
+        
+        cambiarCargando(true);
         const file = imagen;
-        const fileReader = new FileReader();
 
+        const fileReader = new FileReader();
+        
         if(file && fileReader && file.length > 0) {
+            if(!file[0].type === 'image/jpeg' || !file[0].type === 'image/png') {
+                cambiarMensaje("Recuerda subir unicamente una imagen");
+                cambiarCargando(false);
+                return;
+
+            }
+
             fileReader.readAsArrayBuffer(file[0]);
             fileReader.onload = async () => {
+
                 const imageData = fileReader.result;
 
                 const imagenRef = ref(storage, `tools/${imagen[0].name}`);
 
                 const res = await uploadBytes(imagenRef, imageData);
-
                 if(res){
+
+                    
                     addDoc(collection(db, 'tools'), {
                         titulo: titulo,
                         descripcion: descripcion,
@@ -92,7 +104,7 @@ const AgregarHerramienta = () => {
                     autenticacion
                 />
 
-                <Button autenticacion>Agregar Herramienta</Button>
+                {!cargando ? <Button autenticacion>Agregar Herramienta</Button> : <p>Publicando herramienta</p>}
                 <div>{mensaje}</div>
             </Formulario>
         </div>

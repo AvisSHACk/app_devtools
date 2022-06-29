@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 
 const Button = styled(Link)`
@@ -10,6 +10,11 @@ const Button = styled(Link)`
     background-color: green;
     color:#fff;
     text-decoration: none;
+
+    ${({acciones}) => acciones && css`
+        margin-left: 0;
+        margin-right: 1rem;
+    `}
 `
 
 export default Button;

@@ -5,6 +5,7 @@ import {auth, signOut} from "./../firebase/firebaseConfig"
 import { useAuth } from "../contextos/authContext";
 import { useState } from "react";
 import Button from "../elements/botones";
+import Acciones from "../elements/AccionesElement";
 const Inicio = () => {
     const [tools, cambiarTools] = useState([]);
     const {usuario} = useAuth();
@@ -12,10 +13,10 @@ const Inicio = () => {
     return (
         <div className="l-container">
             <Header/>
-            {usuario && <>
-                            <Button to={"/agregarHerramienta"}>Agregar herramieta</Button>
+            {usuario && <Acciones>
+                            <Button to={"/agregarHerramienta"} acciones="true">Agregar herramieta</Button>
                             <button onClick={() => signOut(auth)}>Cerrar sesion</button>
-                        </>
+                        </Acciones>
             }
             <FormularioFiltros cambiarTools={cambiarTools}/>
             <ContenedorCards tools={tools}/>

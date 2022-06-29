@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {Formulario, Texto} from "../elements/FormulariosElements";
+import {Button, Formulario, Texto} from "../elements/FormulariosElements";
 import useGetTools from "../hooks/useGetTools";
 const FormularioFiltros = ({cambiarTools}) => {
     const [buscar, cambiarBuscar] = useState("");
@@ -16,9 +16,9 @@ const FormularioFiltros = ({cambiarTools}) => {
         }))
     }
     return (
-        <Formulario action="" onSubmit={handleSubmit}>
+        <Formulario action="" onSubmit={handleSubmit} search>
             <Texto 
-                type="text" 
+                type="search" 
                 name="buscar"
                 id="buscar"
                 value={buscar}
@@ -26,7 +26,7 @@ const FormularioFiltros = ({cambiarTools}) => {
                 placeholder="Haz tu busquedad..."
             />
 
-            <button>Buscar</button>
+            <Button search>Buscar</Button>
         </Formulario>
      );
 }

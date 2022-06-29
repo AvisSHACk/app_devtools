@@ -8,6 +8,10 @@ const Formulario = styled.form`
     ${({autenticacion}) => autenticacion && css`
         flex-direction: column;
     `}
+
+    ${({search}) => search && css`
+        position: relative;
+    `}
 `;
 
 const Texto = styled.input`
@@ -24,16 +28,25 @@ const Texto = styled.input`
 `
 
 const Button = styled.button`
-    ${({autenticacion}) => autenticacion && css`
         border: 0;
         outline: none;
         border: 2px solid grey;
-        width: 100%;
         padding: .8rem 1rem;
         border-radius:50px;
         background-color: tomato;
         color: #fff;
-    `}
+        background-color: tomato;
+        cursor: pointer;
+        ${({autenticacion}) => autenticacion && css`
+        
+            width: 100%;
+            color: #fff;
+        `}
+
+        ${({search}) => search && css`
+            position: absolute;
+            right: 0;
+        `}
 `
 
 export { Formulario, Texto, Button };
