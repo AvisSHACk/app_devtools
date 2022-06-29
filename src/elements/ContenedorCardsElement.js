@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 const ContenedorCardsElement = styled.div`
     margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 `;
 
 export default ContenedorCardsElement;

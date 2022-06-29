@@ -35,7 +35,7 @@ const AgregarHerramienta = () => {
                 const res = await uploadBytes(imagenRef, imageData);
 
                 if(res){
-                    addDoc(collection(db, 'herramientas'), {
+                    addDoc(collection(db, 'tools'), {
                         titulo: titulo,
                         descripcion: descripcion,
                         enlace: enlace,

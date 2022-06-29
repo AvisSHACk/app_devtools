@@ -68,7 +68,7 @@ const Registro = () => {
                 autenticacion
             />
             <Button autenticacion type="submit">Ingresar</Button>
-            <Mensaje>{mensaje}</Mensaje>
+            { mensaje && <Mensaje>{mensaje}</Mensaje>}
         </Formulario>
         </div>
      );

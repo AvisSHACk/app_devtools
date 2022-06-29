@@ -5,7 +5,7 @@ const useGetTools = () => {
     const [tools, cambiarTools] = useState([]);
 
     useEffect(() => {
-        onSnapshot(collection(db, 'herramientas'), (snapshot) => {
+        onSnapshot(collection(db, 'tools'), (snapshot) => {
             cambiarTools(snapshot.docs.map(doc => {
                 return {...doc.data(), id: doc.id}
             }))

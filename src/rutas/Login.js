@@ -65,7 +65,7 @@ const Login = () => {
                 autenticacion
             />
             <Button autenticacion>Ingresar</Button>
-            <Mensaje>{mensaje}</Mensaje>
+            { mensaje && <Mensaje>{mensaje}</Mensaje>}
         </Formulario>
         </div>
      );

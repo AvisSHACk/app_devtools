@@ -24,6 +24,7 @@ const Card = ({id, titulo, descripcion, enlace, imagen}) => {
             <img src={imagenURL} alt="" />
             <h3>{titulo}</h3>
             <p>{descripcion}</p>
+            <p>Enlace <a href={enlace}>Ir al enlace</a></p>
         </ContenedorCard>
      );
 }

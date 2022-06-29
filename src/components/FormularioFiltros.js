@@ -8,8 +8,15 @@ const FormularioFiltros = ({cambiarTools}) => {
     useEffect(() => {
         cambiarTools(tools);
     }, [cambiarTools, tools])
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        cambiarTools(tools.filter((tool) => {
+            return tool.titulo.toLowerCase().includes(buscar.toLowerCase()) && {...tool} // si se comprueba una cadena vacia devuelve true =) https://ajaxhispano.com/ask/por-que-se-devuelve-true-cuando-se-comprueba-si-una-cadena-vacia-esta-en-otra-84485/
+        }))
+    }
     return (
-        <Formulario action="">
+        <Formulario action="" onSubmit={handleSubmit}>
             <Texto 
                 type="text" 
                 name="buscar"
