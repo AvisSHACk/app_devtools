@@ -3,6 +3,7 @@ import {Formulario, Texto, Button} from "../elements/FormulariosElements";
 import LogoElement from "../elements/LogoElement";
 import {auth, createUserWithEmailAndPassword} from "./../firebase/firebaseConfig";
 import {useNavigate} from "react-router-dom";
+import Mensaje from "../elements/Mensaje";
 const Registro = () => {
     const [correo, cambiarCorreo] = useState("");
     const [password, cambiarPassword] = useState("");
@@ -29,7 +30,7 @@ const Registro = () => {
                     mensaje = "La contraseña es incorrecta, intentalo denuevo";
                     break;
                 case 'auth/user-not-found':
-                    // mensaje = "El usuario no existe";
+                    mensaje = "El usuario no existe";
                     break;
             
                 default:
@@ -67,7 +68,7 @@ const Registro = () => {
                 autenticacion
             />
             <Button autenticacion type="submit">Ingresar</Button>
-            <div>{mensaje}</div>
+            <Mensaje>{mensaje}</Mensaje>
         </Formulario>
         </div>
      );

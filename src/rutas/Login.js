@@ -3,6 +3,7 @@ import {signInWithEmailAndPassword, auth} from "./../firebase/firebaseConfig";
 import {Formulario, Texto, Button} from "../elements/FormulariosElements";
 import LogoElement from "../elements/LogoElement";
 import {useNavigate} from "react-router-dom";
+import Mensaje from "../elements/Mensaje";
 const Login = () => {
     const [correo, cambiarCorreo] = useState("");
     const [password, cambiarPassword] = useState("");
@@ -64,7 +65,7 @@ const Login = () => {
                 autenticacion
             />
             <Button autenticacion>Ingresar</Button>
-            <div>{mensaje}</div>
+            <Mensaje>{mensaje}</Mensaje>
         </Formulario>
         </div>
      );
