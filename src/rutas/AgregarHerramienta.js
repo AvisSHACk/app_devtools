@@ -3,6 +3,7 @@ import {Button, Formulario, Texto} from "../elements/FormulariosElements";
 import LogoElement from "../elements/LogoElement";
 import { db, addDoc, collection, storage, ref, uploadBytes } from "../firebase/firebaseConfig";
 import {useNavigate} from "react-router-dom";
+import { useAuth } from "../contextos/authContext";
 
 const AgregarHerramienta = () => {
     const [titulo, cambiarTitulo] = useState("");
@@ -12,6 +13,7 @@ const AgregarHerramienta = () => {
     const [mensaje, cambiarMensaje] = useState("");
     const [cargando, cambiarCargando] = useState(false);
     const history = useNavigate();
+    const {usuario} = useAuth();
     
 
     const agregarHerramienta = (e) => {
@@ -51,7 +53,8 @@ const AgregarHerramienta = () => {
                         titulo: titulo,
                         descripcion: descripcion,
                         enlace: enlace,
-                        imagen: res.metadata.fullPath
+                        imagen: res.metadata.fullPath,
+                        uidUsuario: usuario.uid
                     }).then(() => {
                         history("/");
                     })

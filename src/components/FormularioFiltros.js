@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import {Button, Formulario, Texto} from "../elements/FormulariosElements";
 import useGetTools from "../hooks/useGetTools";
-const FormularioFiltros = ({cambiarTools}) => {
+const FormularioFiltros = ({cambiarTools, cambiarCargando}) => {
     const [buscar, cambiarBuscar] = useState("");
     const tools = useGetTools();
+    
 
     useEffect(() => {
-        cambiarTools(tools);
-    }, [cambiarTools, tools])
+        if(tools.length > 0){
+            cambiarTools(tools);
+            cambiarCargando(false)
+        }
+    }, [cambiarTools, tools, cambiarCargando])
 
     const handleSubmit = (e) => {
         e.preventDefault();

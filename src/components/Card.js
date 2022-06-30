@@ -5,8 +5,7 @@ import { storage, ref, getDownloadURL } from "../firebase/firebaseConfig";
 const Card = ({id, titulo, descripcion, enlace, imagen}) => {
 
     const [imagenURL, cambiarImagenURL] = useState("");
-
-    useEffect(() => {
+    useEffect(() => {  
 
         const toolImageDonwload = async () => {
             const toolImageRef = ref(storage, imagen);

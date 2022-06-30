@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import LogoElement from "./../elements/LogoElement";
 const Header = () => {
     return ( 
         <header>
-            <LogoElement>DevTools</LogoElement>
+            <LogoElement><Link to="/"> DevTools </Link></LogoElement>
         </header>
      );
 }

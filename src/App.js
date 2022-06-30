@@ -6,6 +6,7 @@ import Registro from './rutas/Registro';
 import RutaProtegida from './components/RutaProtegida';
 import { AuthProvider } from './contextos/authContext';
 import AgregarHerramienta from './rutas/AgregarHerramienta';
+import MisTools from './rutas/MisTools';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path={"/"} element={<Inicio />}/>
           <Route element={<RutaProtegida/>}>
             <Route path={"/agregarHerramienta"} element={<AgregarHerramienta />}/>
+            <Route path={"/misTools"} element={<MisTools />}/>
           </Route>
         </Routes>
       </AuthProvider>
