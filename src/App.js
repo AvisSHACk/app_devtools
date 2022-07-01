@@ -21,7 +21,7 @@ function App() {
             <Route path={"/registro"} element={<Registro />}/>
 
             <Route path={"/"} element={<Layout />}>
-              <Route path={"inicio"} element={<Inicio />} />
+              <Route index element={<Inicio />} />
               <Route element={<RutaProtegidaLogin/>}>
                 <Route element={<RutaProtegidaAdmins/>}>
                   <Route path={"usuarios"} element={<Usuarios />}/>

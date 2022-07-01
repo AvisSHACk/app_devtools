@@ -17,7 +17,7 @@ const RutaProtegidaAdmins = () => {
     if(rol === 'admin') {
         return <Outlet/>
     } else {
-        return <Navigate to="inicio"/>
+        return <Navigate to="/"/>
     }
 }
 
