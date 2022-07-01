@@ -30,7 +30,8 @@ const Registro = () => {
             setDoc(doc(db, `usuarios/${usuarioInfo.user.uid}`), {
                 nombre: nombre,
                 apellidos: apellidos,
-                correo: correo
+                correo: correo,
+                rol: 'normal'
             }).then(() => {
                 history("/");
             })

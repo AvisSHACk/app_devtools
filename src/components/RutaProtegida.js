@@ -2,7 +2,7 @@ import { useAuth } from "../contextos/authContext";
 
 import {Navigate, Outlet} from "react-router-dom";
 
-const RutaProtegida = () => {
+const RutaProtegidaLogin = () => {
     const {usuario} = useAuth();
 
     if(usuario) {
@@ -12,4 +12,13 @@ const RutaProtegida = () => {
     }
 }
 
-export default RutaProtegida;
+const RutaProtegidaAdmins = () => {
+    const {rol} = useAuth();
+    if(rol === 'admin') {
+        return <Outlet/>
+    } else {
+        return <Navigate to="inicio"/>
+    }
+}
+
+export { RutaProtegidaLogin, RutaProtegidaAdmins};

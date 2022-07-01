@@ -2,28 +2,28 @@ import { useEffect, useState } from "react";
 import ContenedorCard from "../elements/CardElement";
 import { storage, ref, getDownloadURL } from "../firebase/firebaseConfig";
 
-const Card = ({id, titulo, descripcion, enlace, imagen}) => {
+const Card = ({tool}) => {
 
     const [imagenURL, cambiarImagenURL] = useState("");
     useEffect(() => {  
 
         const toolImageDonwload = async () => {
-            const toolImageRef = ref(storage, imagen);
+            const toolImageRef = ref(storage, tool.imagen);
             const urlToolImagen = await getDownloadURL(toolImageRef);
             cambiarImagenURL(urlToolImagen);
         }
 
         toolImageDonwload();
 
-    }, [imagen])
+    }, [tool.imagen])
 
     return ( 
         <ContenedorCard>
             {/* {console.log(imagen)} */}
             <img src={imagenURL} alt="" />
-            <h3>{titulo}</h3>
-            <p>{descripcion}</p>
-            <p>Enlace <a href={enlace}>Ir al enlace</a></p>
+            <h3>{tool.titulo}</h3>
+            <p>{tool.descripcion}</p>
+            <p>Enlace <a href={tool.enlace}>Ir al enlace</a></p>
         </ContenedorCard>
      );
 }

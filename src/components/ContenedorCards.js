@@ -6,10 +6,10 @@ const ContenedorCards = ({tools, cargando}) => {
         <ContenedorCardsElement>
             {cargando && <p>Cargando</p>}
             {tools.map((tool) => {
-                return <Card key={tool.id} titulo={tool.titulo} descripcion={tool.descripcion} enlace={tool.enlace} imagen={tool.imagen}/>;
+                return <Card key={tool.id} tool={tool}/>;
             })}
 
-            {tools.length === 0 && <p>Sin resultados</p>}
+            {!cargando && tools.length === 0 && <p>Sin resultados</p>}
             
         </ContenedorCardsElement>
      );
